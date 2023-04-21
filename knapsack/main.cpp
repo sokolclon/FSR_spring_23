@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <vector>
@@ -6,8 +5,8 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    char* filename = argv[2];
-    ifstream fin("./data/" + filename);
+	char* filename = argv[1];
+	ifstream fin(filename);
 	int N, W, pi, wi, i, j;
 	fin >> N >> W;
 	vector <int> p(N);
