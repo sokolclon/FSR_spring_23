@@ -58,6 +58,7 @@ int main(int argc, char** argv) {
 	for (i = 0; i < N; i++) {
 	    cout << solution[i] << ' ';
 	}
+	cout << endl;
 	fin.close();
 	return 0;
 }
