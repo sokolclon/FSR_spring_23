@@ -7,16 +7,16 @@ using namespace std;
 int main(int argc, char** argv) {
 	char* filename = argv[1];
 	ifstream fin(filename);
-	int N, W, pi, wi, i, j;
+	long long N, W, pi, wi, i, j;
 	fin >> N >> W;
-	vector <int> p(N);
-	vector <int> w(N);
+	vector <long long> p(N);
+	vector <long long> w(N);
 	for (i = 0; i < N; i++) {
 		fin >> pi >> wi;
 		p[i] = pi;
 		w[i] = wi;
 	}
-	vector < vector <int>> sol(N, vector <int> (W + 1, 0));
+	vector < vector <long long>> sol(N, vector <long long> (W + 1, 0));
 	for (i = 0; i < N; i++) {
 		for (j = 0; j <= W; j++) {
 			if (w[i] <= j) {
@@ -37,13 +37,18 @@ int main(int argc, char** argv) {
 	vector <int> solution(N, 0);
 	i = N - 1; j = W;
 	while (sol[i][j]) {
-		if (sol[i][j] == sol[i - 1][j]) {
-			i--;
+		if (i >= 1) {
+			if (sol[i][j] == sol[i - 1][j]) {
+				i--;
+			}
+			else if (sol[i][j] == p[i] + sol[i - 1][j - w[i]]) {
+				solution[i] = 1;
+				j = j - w[i];
+				i--;
+			}
 		}
-		else if (sol[i][j] == p[i] + sol[i - 1][j - w[i]]) {
-			solution[i] = 1;
-			j = j - w[i];
-			i--;
+		else {
+			break;
 		}
 	}
 	long long psum = 0, wsum = 0;
