@@ -1,0 +1,10 @@
+int: N;
+int: W;
+array[1..N] of int: profit;
+array[1..N] of int: size;
+array[1..N] of var 0..1: x;
+constraint forall(i in 1..N)(x[i] >= 0);
+constraint sum(i in 1..N)(size[i] * x[i]) <= W;
+var int: total = sum(i in 1..N)(profit[i] * x[i]);
+solve maximize total;
+output [show(total) ++ "\n"];
