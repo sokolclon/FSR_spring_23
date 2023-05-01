@@ -158,7 +158,7 @@ int main(int argc, char** argv) {
 	for (i = 0; i < V - 1; i++) {
 		ans += graph[A.gene[i]][A.gene[i + 1]];
 	}
-    ans += graph[A.gene[V - 1]][A.gene[0]];
+	ans += graph[A.gene[V - 1]][A.gene[0]];
 	cout << ans << endl;
 	fin.close();
 	return 0;
